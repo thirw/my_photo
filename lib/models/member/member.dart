@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'member.g.dart';
+
+@JsonSerializable()
 class MemberModel {
   late final int memberId;
   late final String memberName;
