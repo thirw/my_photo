@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:my_photo/data/models/photo/photo.dart';
+import 'package:my_photo/modules/home/controller/home_controller.dart';
+import 'package:my_photo/modules/home/view/widget/image_card.dart';
+import 'package:my_photo/modules/profile/view/profile_view.dart';
+import 'package:my_photo/modules/signin/view/signin_view.dart';
+import 'package:my_photo/utils/helper.dart';
 
 class HomeView extends StatefulWidget {
+  static const String routeName = "/home";
   const HomeView({Key? key}) : super(key: key);
 
   @override
@@ -8,8 +16,74 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+  final HomeController _homeController = HomeController();
+  bool _isLoading = false;
+  List<AllPhoto> _data = [];
+
+  @override
+  void initState() {
+    setState(() {
+      this._isLoading = true;
+    });
+    this._getPhotos();
+    super.initState();
+  }
+
+  Future _getPhotos() async {
+    final List<AllPhoto> data = await _homeController.getAllPhotos();
+    setState(() {
+      _data = data;
+      _isLoading = false;
+    });
+  }
+
+  void _onUpload() async {
+    setState(() {
+      _isLoading = true;
+    });
+    await _homeController.onUploadImage(context);
+    await this._getPhotos();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      backgroundColor: Colors.blueGrey[50],
+      appBar: AppBar(
+        title: Text('Home'),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: ()=> _homeController.navigateToProfile(context),
+            icon: Icon(Icons.person),
+          )
+        ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: _getPhotos,
+        child: _isLoading? Center(child: CircularProgressIndicator(),): Container(
+          child: SingleChildScrollView(
+            child:
+            Center(
+              child:  ListView.builder(
+                itemCount: _data.length,
+                shrinkWrap: true,
+                physics: ScrollPhysics(),
+                itemBuilder: (context, index) => ImageCard(
+                  time: Helper().dateTimeConvert(_data[index].updatedAt.toString()),
+                  img: _data[index].path.toString(),
+                  name: _data[index].memberName.toString(),
+                  desceiption:  _data[index].name.toString(),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _onUpload ,
+        child: Icon(Icons.camera_alt),
+      ),
+    );
   }
 }

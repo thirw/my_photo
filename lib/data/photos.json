@@ -1,51 +1,18 @@
-[{
-  "photos_id": 1,
-  "member_id": 1,
-  "photos_name": "nabbe0@51.la",
-  "created_at": "1621025059000"
-}, {
-  "photos_id": 2,
-  "member_id": 2,
-  "photos_name": "nesom1@youtube.com",
-  "created_at": "1618599590000"
-}, {
-  "photos_id": 3,
-  "member_id": 3,
-  "photos_name": "lcrosby2@netscape.com",
-  "created_at": "1602290932000"
-}, {
-  "photos_id": 4,
-  "member_id": 4,
-  "photos_name": "sghost3@toplist.cz",
-  "created_at": "1620438434000"
-}, {
-  "photos_id": 5,
-  "member_id": 5,
-  "photos_name": "mpury4@macromedia.com",
-  "created_at": "1611245361000"
-}, {
-  "photos_id": 6,
-  "member_id": 6,
-  "photos_name": "slapworth5@slate.com",
-  "created_at": "1626956656000"
-}, {
-  "photos_id": 7,
-  "member_id": 7,
-  "photos_name": "blawie6@answers.com",
-  "created_at": "1613296989000"
-}, {
-  "photos_id": 8,
-  "member_id": 8,
-  "photos_name": "mklaes7@hc360.com",
-  "created_at": "1624557222000"
-}, {
-  "photos_id": 9,
-  "member_id": 9,
-  "photos_name": "bclinch8@tamu.edu",
-  "created_at": "1609918597000"
-}, {
-  "photos_id": 10,
-  "member_id": 10,
-  "photos_name": "jhynard9@pen.io",
-  "created_at": "1615814118000"
-}]
+[
+  {
+    "id": 3,
+    "memberId": 1,
+    "memberName": "ninefyi",
+    "name": "piti-manao-2.png",
+    "path": "https://fyi-photo-api.herokuapp.com/uploads/1632048775463--piti-manao-2.png",
+    "updatedAt": "2021-09-19 10:52:57"
+  },
+  {
+    "id": 4,
+    "memberId": 1,
+    "memberName": "ninefyi",
+    "name": "summer_2.png",
+    "path": "https://fyi-photo-api.herokuapp.com/uploads/1632239731231--summer_2.png",
+    "updatedAt": "2021-09-21 15:55:31"
+  }
+]

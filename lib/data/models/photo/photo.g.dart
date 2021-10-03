@@ -6,26 +6,30 @@ part of 'photo.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-Photo _$PhotoFromJson(Map<String, dynamic> json) => Photo(
-      (json['data'] as List<dynamic>)
-          .map((e) => Items.fromJson(e as Map<String, dynamic>))
-          .toList(),
+PhotoById _$PhotoByIdFromJson(Map<String, dynamic> json) => PhotoById(
+      json['id'] as int?,
+      json['name'] as String?,
+      json['path'] as String?,
+      json['updatedAt'] as String?,
     );
 
-Map<String, dynamic> _$PhotoToJson(Photo instance) => <String, dynamic>{
-      'data': instance.data,
+Map<String, dynamic> _$PhotoByIdToJson(PhotoById instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'path': instance.path,
+      'updatedAt': instance.updatedAt,
     };
 
-Items _$ItemsFromJson(Map<String, dynamic> json) => Items(
+AllPhoto _$AllPhotoFromJson(Map<String, dynamic> json) => AllPhoto(
       json['id'] as int,
-      json['memberId'] as int,
-      json['memberName'] as String,
+      json['memberId'] as int?,
+      json['memberName'] as String?,
       json['name'] as String,
       json['path'] as String,
       json['updatedAt'] as String,
     );
 
-Map<String, dynamic> _$ItemsToJson(Items instance) => <String, dynamic>{
+Map<String, dynamic> _$AllPhotoToJson(AllPhoto instance) => <String, dynamic>{
       'id': instance.id,
       'memberId': instance.memberId,
       'memberName': instance.memberName,

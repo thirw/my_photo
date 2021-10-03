@@ -3,10 +3,14 @@ import 'package:json_annotation/json_annotation.dart';
 part 'member.g.dart';
 
 @JsonSerializable()
-class MemberModel {
-  late final int memberId;
-  late final String memberName;
-  late final String memberEmail;
-  late final String memberPassword;
-  late final DateTime createdAt;
+class Member {
+  late int id;
+  late String name;
+
+  Member(this.id, this.name);
+
+  factory Member.fromJson(Map<String, dynamic> json) => _$MemberFromJson(json);
+
+  Map<String, dynamic> toJson(instance) => _$MemberToJson(this);
+
 }
