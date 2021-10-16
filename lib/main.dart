@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  final isLoggedIn =  prefs.getBool('isLoggedIn');
+  final isLoggedIn = prefs.getBool('isLoggedIn');
 
   runApp(MaterialApp(
     title: 'Flutter Demo',
@@ -24,6 +24,3 @@ void main() async {
     },
   ));
 }
-
-
-

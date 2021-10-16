@@ -12,7 +12,7 @@ class RegisterController {
   String? emailValidator(String? value) {
     final isEmail = Helper().emailValidate(value!);
     if (value.isEmpty) {
-      return 'Please enter your name';
+      return 'Please enter your email';
     }
     if (!isEmail) {
       return 'Please enter a valid email address';
@@ -36,7 +36,7 @@ class RegisterController {
 
   String? nameValidator(String? value) {
     if (value!.isEmpty) {
-      return 'Please enter a valid email address';
+      return 'Please enter a valid name';
     }
     return null;
   }
@@ -57,10 +57,10 @@ class RegisterController {
         "password": passwordController.text.trim(),
       };
       await RegisterProvider().onCreateMember(data);
-      emailController.text = '';
-      passwordController.text = '';
-      confirmedPasswordController.text = '';
-      nameController.text = '';
+      emailController.clear();
+      passwordController.clear();
+      confirmedPasswordController.clear();
+      nameController.clear();
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text('Cannot register please try again.'),

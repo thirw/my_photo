@@ -58,8 +58,8 @@ class ApiServices {
   Future onUploadPhotos(String path, dynamic data) async {
     try {
       Dio dio = new Dio();
-      final String x = baseUrl + path;
-      final response = dio.post(x,
+      final String url = baseUrl + path;
+      final response = dio.post(url,
           data: data,
           options: Options(
             method: 'POST',

@@ -35,79 +35,76 @@ class _SignInViewState extends State<SignInView> {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
-          body: Center(
-        child: SafeArea(
-          child: Container(
-            child: Padding(
-              padding: EdgeInsets.all(16),
-              child: Form(
-                key: _signInController.formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    TextFormField(
-                      key: ValueKey('email'),
-                      controller: _signInController.emailController,
-                      autocorrect: false,
-                      textCapitalization: TextCapitalization.none,
-                      enableSuggestions: false,
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        icon: Icon(Icons.email),
-                      ),
-                      validator: (value) =>
-                          _signInController.emailValidator(value),
-                      onSaved: (value) {},
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      key: ValueKey('password'),
-                      controller: _signInController.passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        icon: Icon(Icons.lock),
-                      ),
-                      validator: (value) =>
-                          _signInController.passwordValidator(value),
-                      onSaved: (value) {},
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    Container(
-                      width: 150,
-                      child: TextButton(
-                        onPressed: () =>
-                            _signInController.navigateToRegister(context),
-                        child: const Text('Register'),
-                      ),
-                    ),
-                    Container(
-                      width: 150,
-                      child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          primary: Theme.of(context).accentColor,
+          body: SafeArea(
+            child: Container(
+              child: Padding(
+                padding: EdgeInsets.all(16),
+                child: Form(
+                  key: _signInController.formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      TextFormField(
+                        key: ValueKey('email'),
+                        controller: _signInController.emailController,
+                        autocorrect: false,
+                        textCapitalization: TextCapitalization.none,
+                        enableSuggestions: false,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          icon: Icon(Icons.email),
                         ),
-                        child: Text(
-                                'Sign In',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                ),
-                              ),
-                        onPressed: _onSignIn,
+                        validator: (value) =>
+                            _signInController.emailValidator(value),
                       ),
-                    ),
-                  ],
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      TextFormField(
+                        key: ValueKey('password'),
+                        controller: _signInController.passwordController,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          labelText: 'Password',
+                          icon: Icon(Icons.lock),
+                        ),
+                        validator: (value) =>
+                            _signInController.passwordValidator(value),
+                        onSaved: (value) {},
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: 150,
+                        child: TextButton(
+                          onPressed: () =>
+                              _signInController.navigateToRegister(context),
+                          child: const Text('Register'),
+                        ),
+                      ),
+                      Container(
+                        width: 150,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            primary: Theme.of(context).accentColor,
+                          ),
+                          child: Text(
+                                  'Sign In',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                  ),
+                                ),
+                          onPressed: _onSignIn,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
-      )),
+          )),
     );
   }
 }

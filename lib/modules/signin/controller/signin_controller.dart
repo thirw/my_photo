@@ -53,13 +53,13 @@ class SignInController {
       final Member response = await SignInProvider().onSingIn(data);
       await prefs.setInt('memberId', response.id);
       await prefs.setBool('isLoggedIn', true);
-      emailController.text = '';
-      passwordController.text = '';
+      emailController.clear();
+      passwordController.clear();
       _navigateToHome(context);
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: const Text('Cannot sign in please try again.'),
-        duration: const Duration(seconds: 1),
+        duration: const Duration(seconds: 2),
       ));
 
     }

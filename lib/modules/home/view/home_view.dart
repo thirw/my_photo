@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:my_photo/data/models/photo/photo.dart';
 import 'package:my_photo/modules/home/controller/home_controller.dart';
-import 'package:my_photo/modules/home/view/widget/image_card.dart';
-import 'package:my_photo/modules/profile/view/profile_view.dart';
-import 'package:my_photo/modules/signin/view/signin_view.dart';
+import 'package:my_photo/share/widget/image_card.dart';
 import 'package:my_photo/utils/helper.dart';
 
 class HomeView extends StatefulWidget {
@@ -38,9 +35,9 @@ class _HomeViewState extends State<HomeView> {
   }
 
   void _onUpload() async {
-    setState(() {
-      _isLoading = true;
-    });
+    // setState(() {
+    //   _isLoading = true;
+    // });
     await _homeController.onUploadImage(context);
     await this._getPhotos();
   }
@@ -61,7 +58,9 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: RefreshIndicator(
         onRefresh: _getPhotos,
-        child: _isLoading? Center(child: CircularProgressIndicator(),): Container(
+        child: _isLoading
+            ? Center(
+                child: CircularProgressIndicator(),): Container(
           child: SingleChildScrollView(
             child:
             Center(
@@ -70,10 +69,10 @@ class _HomeViewState extends State<HomeView> {
                 shrinkWrap: true,
                 physics: ScrollPhysics(),
                 itemBuilder: (context, index) => ImageCard(
-                  time: Helper().dateTimeConvert(_data[index].updatedAt.toString()),
-                  img: _data[index].path.toString(),
-                  name: _data[index].memberName.toString(),
-                  desceiption:  _data[index].name.toString(),
+                  time: Helper().dateTimeConvert(_data[index].updatedAt),
+                  img: _data[index].path,
+                  name: _data[index].memberName,
+                  desceiption:  _data[index].name,
                 ),
               ),
             ),

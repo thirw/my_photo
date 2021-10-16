@@ -17,8 +17,6 @@ class ImageCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(name);
-    print(desceiption);
     final _name = name ?? '';
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),

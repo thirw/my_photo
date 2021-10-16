@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_photo/data/models/photo/photo.dart';
-import 'package:my_photo/modules/home/view/widget/image_card.dart';
 import 'package:my_photo/modules/profile/controller/profile_controller.dart';
+import 'package:my_photo/share/widget/image_card.dart';
 import 'package:my_photo/utils/helper.dart';
 
 class ProfileView extends StatefulWidget {
