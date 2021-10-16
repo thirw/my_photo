@@ -5,10 +5,8 @@ import 'package:my_photo/data/network/api_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileProvider {
-  Future getPhotosByMemberId() async {
+  Future getPhotosByMemberId(String memberId) async {
     try {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      final memberId = prefs.getInt('memberId').toString();
       List<PhotoById> photosList = [];
       final response = await ApiServices().getAllPhotos('/members/$memberId/photos');
       final jsonList = jsonDecode(response!.body);

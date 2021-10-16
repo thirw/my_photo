@@ -6,6 +6,7 @@ import 'package:my_photo/utils/helper.dart';
 
 class HomeView extends StatefulWidget {
   static const String routeName = "/home";
+
   const HomeView({Key? key}) : super(key: key);
 
   @override
@@ -51,7 +52,7 @@ class _HomeViewState extends State<HomeView> {
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: ()=> _homeController.navigateToProfile(context),
+            onPressed: () => _homeController.navigateToProfile(context),
             icon: Icon(Icons.person),
           )
         ],
@@ -60,27 +61,28 @@ class _HomeViewState extends State<HomeView> {
         onRefresh: _getPhotos,
         child: _isLoading
             ? Center(
-                child: CircularProgressIndicator(),): Container(
-          child: SingleChildScrollView(
-            child:
-            Center(
-              child:  ListView.builder(
-                itemCount: _data.length,
-                shrinkWrap: true,
-                physics: ScrollPhysics(),
-                itemBuilder: (context, index) => ImageCard(
-                  time: Helper().dateTimeConvert(_data[index].updatedAt),
-                  img: _data[index].path,
-                  name: _data[index].memberName,
-                  desceiption:  _data[index].name,
+                child: CircularProgressIndicator(),
+              )
+            : Container(
+                child: SingleChildScrollView(
+                  child: Center(
+                    child: ListView.builder(
+                      itemCount: _data.length,
+                      shrinkWrap: true,
+                      physics: ScrollPhysics(),
+                      itemBuilder: (context, index) => ImageCard(
+                        time: Helper().dateTimeConvert(_data[index].updatedAt),
+                        img: _data[index].path,
+                        name: _data[index].memberName,
+                        desceiption: _data[index].name,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
-        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _onUpload ,
+        onPressed: _onUpload,
         child: Icon(Icons.camera_alt),
       ),
     );

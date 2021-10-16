@@ -10,6 +10,8 @@ class HomeProvider {
   Future getImages() async {
     try{
       List<AllPhoto> photosList = [];
+      // ------- use json -------
+      // final res = await rootBundle.loadString('lib/data/photos.json');
       final response = await ApiServices().getAllPhotos('/photos');
       final jsonList = jsonDecode(response!.body);
       for(final item in jsonList){

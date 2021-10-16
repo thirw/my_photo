@@ -16,7 +16,9 @@ class ProfileController {
 
   Future getPhotos() async {
     try {
-      final List<PhotoById> response = await _profileProvider.getPhotosByMemberId();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final memberId = prefs.getInt('memberId').toString();
+      final List<PhotoById> response = await _profileProvider.getPhotosByMemberId(memberId);
       return response;
     } catch (error) {
       print("err: " + error.toString());

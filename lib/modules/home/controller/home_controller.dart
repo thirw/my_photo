@@ -42,11 +42,10 @@ class HomeController {
         imageQuality: 100,
       );
       if (pickedImage != null) {
-        final pickedImageFile = File(pickedImage.path);
+        // final pickedImageFile = File(pickedImage.path);
         final formData = form.FormData.fromMap({
           'memberId': memberId,
-          'photos_file': await _generateImageFromPath(pickedImageFile.path),
-
+          'photos_file': await _generateImageFromPath(pickedImage.path),
         });
         await _homeProvider.onUploadImage(formData);
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
